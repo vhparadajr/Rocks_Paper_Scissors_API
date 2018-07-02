@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>Rock Paper Scissors</title>
+	<link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Old+Standard+TT:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript">
+
+	window.onload = function(){
+		//event listeners for rock
+		document.getElementById("rock").onclick = playerRock
+		//event listeners for paper
+		document.getElementById("paper").onclick = playerPaper
+		//event listeners for scissors
+		document.getElementById("scissors").onclick = playerScissors
+
+		function playerRock (){
+			compthrows = getcompChoice()
+			winlosstie(compthrows, "rock")
+		}
+
+		function playerPaper(){
+			compthrows = getcompChoice()
+			winlosstie (compthrows, "paper")
+		}
+		function playerScissors(){
+			compthrows = getcompChoice()
+			winlosstie (compthrows, "paper")
+		}
+		function getcompChoice (){
+			outcomeRandom = Math.random();
+			var compChoice = "rock"
+			if ( outcomeRandom <.33){
+				compChoice = "scissors"
+			} else if(outcomeRandom <.66){
+				compChoice = "paper"
+			}
+			return compChoice;
+		}
+
+
+		function winlosstie(compChoice,playerOption){
+			if (compChoice == playerOption){
+				document.getElementsByTagName('h1')[0].innerHTML = "tie"
+			} else if ((compChoice == "rock" && playerOption =="scissors" ) ||
+								(compChoice == "paper" && playerOption == "rock") ||
+								(compChoice == "scissors" && playerOption == "paper")	){
+				document.getElementsByTagName('h1')[0].innerHTML = "user lost"
+			}else {
+				document.getElementsByTagName('h1')[0].innerHTML = "user won"
+			}
+		}
+    // your code
+	};
+	</script>
+</head>
+<body>
+	<div id="container">
+		<button id = "rock" type="button" name="button">Rock</button>
+		<button id = "paper" type="button" name="button">Paper</button>
+		<button id = "scissors" type="button" name="button">Scissor</button>
+		<p>h1 appears here??</p>
+		<h1></h1>
+
+	</div>
+
+
+	<!-- <script src="js/main.js"></script> -->
+</body>
+</html>
